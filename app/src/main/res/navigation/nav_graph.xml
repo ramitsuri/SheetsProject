@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation android:id="@+id/nav_graph"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <fragment
+        android:id="@+id/fragment_expenses"
+        android:name="com.ramitsuri.expensemanager.ui.fragment.ExpensesFragment"
+        android:label="@string/common_expenses"
+        tools:layout="@layout/fragment_expenses">
+
+        <action
+            android:id="@+id/nav_action_settings"
+            app:destination="@id/fragment_settings" />
+
+        <action
+            android:id="@+id/nav_action_sheets"
+            app:destination="@id/fragment_metadata" />
+
+        <action
+            android:id="@+id/nav_action_add_expense"
+            app:destination="@id/fragment_add_expense">
+            <argument
+                android:name="expense"
+                android:defaultValue="@null"
+                app:argType="com.ramitsuri.expensemanager.entities.Expense"
+                app:nullable="true" />
+
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_settings"
+        android:name="com.ramitsuri.expensemanager.ui.fragment.SettingsFragment"
+        android:label="@string/common_empty" />
+
+    <fragment
+        android:id="@+id/fragment_metadata"
+        android:name="com.ramitsuri.expensemanager.ui.fragment.MetadataFragment" />
+
+    <fragment
+        android:id="@+id/fragment_add_expense"
+        android:name="com.ramitsuri.expensemanager.ui.fragment.AddExpenseFragment"
+        android:label="@string/common_empty"
+        tools:layout="@layout/fragment_add_expense">
+        <argument
+            android:name="expense"
+            android:defaultValue="@null"
+            app:argType="com.ramitsuri.expensemanager.entities.Expense"
+            app:nullable="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_setup"
+        android:name="com.ramitsuri.expensemanager.ui.fragment.SetupFragment"
+        tools:layout="@layout/fragment_setup">
+
+        <action
+            android:id="@+id/nav_action_setup_done"
+            app:destination="@id/fragment_expenses"
+            app:popUpTo="@id/fragment_setup"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+</navigation>
